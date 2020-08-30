@@ -262,3 +262,40 @@
 
 /obj/structure/fluff/hedge/opaque //useful for mazes and such
 	opacity = TRUE
+
+/obj/structure/fluff/corn_wall
+	name = "corn wall"
+	desc = "A large wall of corn. Perfect for a maize."
+	icon = 'icons/obj/fluff_large.dmi'
+	icon_state = "corn_wall"
+	max_integrity = 9999
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	density = TRUE
+	opacity = TRUE
+	anchored = TRUE
+	deconstructible = FALSE
+
+/obj/structure/fluff/support // someone test to see if projectiles can go through this later.
+	name = "support beam"
+	desc = "This helps keep the tent up."
+	icon = 'icons/obj/fluff.dmi'
+	icon_state = "support"
+	max_integrity = 5000
+	mouse_opacity = 0
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	layer = TABLE_LAYER
+	pass_flags = LETPASSTHROW
+	density = FALSE
+	anchored = TRUE
+	deconstructible = FALSE
+
+/obj/structure/fluff/books_sign
+	name = "crude sign"
+	desc = "A crudely-made sign with the words 'books' written."
+	icon = 'icons/obj/fluff.dmi'
+	icon_state = "books"
+	max_integrity = 9999
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	density = FALSE
+	anchored = TRUE
+	deconstructible = FALSE
