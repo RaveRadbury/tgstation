@@ -831,3 +831,15 @@
 	popper.visible_message("<span class='danger'>[popper] steps on \the [src], popping the bag!</span>", "<span class='danger'>You step on \the [src], popping the bag!</span>", "<span class='danger'>You hear a sharp crack!</span>", COMBAT_MESSAGE_RANGE)
 	generate_trash(loc)
 	qdel(src)
+	
+/obj/item/reagent_containers/food/snacks/cotton_candy
+	name = "Cotton Candy"
+	desc = "Fluffy sugary goodness!"
+	icon_state = "cottoncandy"
+	trash = /obj/item/reagent_containers/food/drinks/sillycup
+	bitesize = 5
+	list_reagets = list(/datum/reagent/consumable/sugar = 5)
+	junkiness = 30
+	tastes = list("soft sugar" = 1)
+	foodtype = JUNKFOOD | SUGAR
+	value = FOOD_JUNK
