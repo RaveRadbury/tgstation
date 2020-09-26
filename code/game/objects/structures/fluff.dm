@@ -143,8 +143,16 @@
 	name = "conversion altar"
 	desc = "An altar dedicated to a deity."
 	icon_state = "convertaltar"
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	density = FALSE
 	can_buckle = 1
+
+/obj/structure/fluff/divine/forge
+	name = "Ruinous Forge"
+	desc = "A forge dedicated to producing corrupting pieces of armor and weaponry... Bah, I'm sure we'll be fine using whatever comes out of it!"
+	icon_state = "forge-blue"
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	density = TRUE
 
 /obj/structure/fluff/divine/powerpylon
 	name = "power pylon"
@@ -311,6 +319,28 @@
 	anchored = TRUE
 	deconstructible = FALSE
 
+/obj/structure/fluff/medieval_sign
+	name = "crude sign"
+	desc = "A crudely-made sign with the the symbol of a crown, implying that this is a medieval stand."
+	icon = 'icons/obj/fluff.dmi'
+	icon_state = "medieval"
+	max_integrity = 9999
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	density = TRUE
+	anchored = TRUE
+	deconstructible = FALSE
+
+/obj/structure/fluff/oranges_sign
+	name = "crude sign"
+	desc = "A crudely-made sign with the a drawn orange. Has the day of the juicer finally arrived?"
+	icon = 'icons/obj/fluff.dmi'
+	icon_state = "juicer"
+	max_integrity = 9999
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	density = TRUE
+	anchored = TRUE
+	deconstructible = FALSE
+
 /obj/structure/fluff/headstone
 	name = "headstone"
 	desc = "R.I.P"
@@ -340,6 +370,28 @@
 	desc = "Hey, where did the signal go?"
 	icon = 'icons/obj/fluff.dmi'
 	icon_state = "haunted_tv"
+	max_integrity = 9999
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	density = TRUE
+	anchored = TRUE
+	deconstructible = FALSE
+
+/obj/structure/fluff/medieval_stage1
+	name = "Anvil"
+	desc = "Top of the line technology from around ten centuries ago."
+	icon = 'icons/obj/fluff.dmi'
+	icon_state = "anvil"
+	max_integrity = 9999
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	density = TRUE
+	anchored = TRUE
+	deconstructible = FALSE
+
+/obj/structure/fluff/medieval_stage2
+	name = "Forge"
+	desc = "Top of the line technology from around ten centuries ago."
+	icon = 'icons/obj/fluff.dmi'
+	icon_state = "furnace_on"
 	max_integrity = 9999
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	density = TRUE
