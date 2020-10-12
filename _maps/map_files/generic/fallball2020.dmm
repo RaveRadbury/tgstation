@@ -7040,11 +7040,14 @@
 /turf/open/floor/plating/asteroid,
 /area/awaymission/cabin/snowforest/forest)
 "oK" = (
-/obj/structure{
-	color = "#000fff";
-	name = "SET ON ANIMALS LATER. USE CUSTOM AREA TURFS."
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = 12
 	},
-/turf/open/floor/plating/asteroid,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
 /area/awaymission/cabin/snowforest/forest)
 "oL" = (
 /obj/effect/turf_decal/arrows/red{
@@ -7078,8 +7081,10 @@
 /turf/open/floor/plating/asteroid,
 /area/awaymission/cabin/snowforest/forest)
 "oQ" = (
-/obj/effect/mapping_helpers/component_injector/areabound,
-/turf/open/floor/plating/asteroid,
+/obj/structure/sign/poster/official/nanotrasen_logo,
+/turf/closed/indestructible/wood{
+	opacity = 0
+	},
 /area/awaymission/cabin/snowforest/forest)
 "oR" = (
 /obj/structure/fence{
@@ -13267,6 +13272,12 @@
 	},
 /turf/open/floor/plating/sandy_dirt,
 /area/crew_quarters/theatre/zoo_cow)
+"CK" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/turf/open/floor/wood,
+/area/awaymission/cabin/snowforest/forest)
 "CO" = (
 /obj/structure/railing/wooden{
 	dir = 1
@@ -13307,11 +13318,20 @@
 /turf/open/floor/plating/sandy_dirt,
 /area/crew_quarters/theatre/zoo_walt)
 "Dr" = (
-/obj/effect/turf_decal/weather/snow/corner{
-	dir = 1
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
 	},
-/obj/structure/fluff/store_sign,
-/turf/open/floor/plating/asteroid,
+/turf/open/floor/wood,
+/area/awaymission/cabin/snowforest/forest)
+"Du" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = -12
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
 /area/awaymission/cabin/snowforest/forest)
 "Dw" = (
 /turf/open/floor/pod/light,
@@ -13359,6 +13379,12 @@
 /mob/living/simple_animal/pet/dog/bullterrier,
 /turf/open/floor/plating/sandy_dirt,
 /area/crew_quarters/theatre/zoo_walt)
+"EH" = (
+/obj/structure/sign/poster/official/cleanliness,
+/turf/closed/indestructible/wood{
+	opacity = 0
+	},
+/area/awaymission/cabin/snowforest/forest)
 "Fd" = (
 /obj/structure/railing/wooden{
 	dir = 4
@@ -13467,6 +13493,10 @@
 	},
 /turf/open/floor/plating/sandy_dirt,
 /area/crew_quarters/theatre/zoo_chicken)
+"GQ" = (
+/obj/structure/chair/stool,
+/turf/open/floor/material,
+/area/awaymission/cabin/snowforest/forest)
 "GU" = (
 /turf/open/floor/plating/sandy_dirt,
 /area/crew_quarters/theatre/zoo_heretic)
@@ -13537,7 +13567,9 @@
 /turf/open/floor/plating/grass,
 /area/crew_quarters/theatre/zoo_reptile)
 "IB" = (
-/obj/structure/flora/rock/pile/icy,
+/obj/structure/flora/rock/pile/icy{
+	density = 0
+	},
 /turf/open/floor/holofloor/snow,
 /area/crew_quarters/theatre/zoo_penguin)
 "IF" = (
@@ -13579,6 +13611,9 @@
 "Jg" = (
 /turf/closed/indestructible/wood,
 /area/crew_quarters/theatre/zoo_vat)
+"Jm" = (
+/turf/closed/wall/material,
+/area/awaymission/cabin/snowforest/forest)
 "Jn" = (
 /obj/structure/railing/wooden{
 	dir = 4
@@ -13737,7 +13772,10 @@
 	faction = list("neutral");
 	status_flags = 24
 	},
-/turf/closed/indestructible/paper,
+/turf/closed/indestructible/paper{
+	density = 0;
+	desc = "A layering of impenetrable sheets of paper."
+	},
 /area/crew_quarters/theatre/zoo_stick)
 "Mn" = (
 /mob/living/simple_animal/hostile/retaliate/spaceman{
@@ -13834,6 +13872,10 @@
 	},
 /turf/open/floor/plating/sandy_dirt,
 /area/crew_quarters/theatre/zoo_stick)
+"Oj" = (
+/obj/structure/sign/departments/custodian,
+/turf/closed/wall/material,
+/area/awaymission/cabin/snowforest/forest)
 "Ok" = (
 /obj/structure/fluff/paper/stack{
 	dir = 8
@@ -13880,6 +13922,8 @@
 /obj/item/food/burger/fish,
 /obj/item/food/burger/fish,
 /obj/item/food/burger/fish,
+/obj/item/clothing/suit/jacket,
+/obj/item/clothing/suit/jacket,
 /turf/open/floor/plating/asteroid,
 /area/awaymission/cabin/snowforest/forest)
 "Pj" = (
@@ -13893,7 +13937,9 @@
 /obj/structure/railing/wooden{
 	dir = 10
 	},
-/obj/structure/flora/rock/pile/icy,
+/obj/structure/flora/rock/pile/icy{
+	density = 0
+	},
 /turf/open/floor/holofloor/snow,
 /area/crew_quarters/theatre/zoo_penguin)
 "Pv" = (
@@ -14006,8 +14052,8 @@
 /turf/open/floor/plating/sandy_dirt,
 /area/crew_quarters/theatre/zoo_reptile)
 "Rd" = (
-/obj/structure/fluff/store_sign,
-/turf/open/floor/plating/asteroid,
+/obj/machinery/door/airlock,
+/turf/open/floor/material,
 /area/awaymission/cabin/snowforest/forest)
 "Rs" = (
 /mob/living/simple_animal/hostile/eldritch/stalker{
@@ -14042,7 +14088,7 @@
 /area/crew_quarters/theatre/zoo_gondola)
 "Sq" = (
 /obj/structure/railing/wooden,
-/obj/item/stack/sheet/bone,
+/obj/item/food/meat/slab/human/mutant/skeleton,
 /turf/open/floor/plating/sandy_dirt,
 /area/crew_quarters/theatre/zoo_walt)
 "SB" = (
@@ -14123,9 +14169,18 @@
 	},
 /turf/open/floor/pod/light,
 /area/awaymission/cabin/snowforest/forest)
+"UO" = (
+/obj/machinery/vending/wardrobe/jani_wardrobe{
+	products = list(/obj/item/clothing/under/rank/civilian/janitor = 2, /obj/item/cartridge/janitor = 2, /obj/item/clothing/under/rank/civilian/janitor/skirt = 2, /obj/item/clothing/gloves/color/black = 2, /obj/item/clothing/head/soft/purple = 2, /obj/item/pushbroom = 2, /obj/item/paint/paint_remover = 2, /obj/item/flashlight = 2, /obj/item/clothing/suit/caution = 6, /obj/item/holosign_creator = 2, /obj/item/lightreplacer = 2, /obj/item/soap/nanotrasen = 2, /obj/item/storage/bag/trash = 2, /obj/item/clothing/shoes/galoshes = 2, /obj/item/watertank/janitor = 1, /obj/item/storage/belt/janitor = 2)
+	},
+/turf/open/floor/material,
+/area/awaymission/cabin/snowforest/forest)
 "UR" = (
 /turf/closed/indestructible/wood,
 /area/crew_quarters/theatre/zoo_reptile)
+"UT" = (
+/turf/open/floor/material,
+/area/awaymission/cabin/snowforest/forest)
 "Ve" = (
 /obj/structure/railing/wooden,
 /turf/open/floor/plating/sandy_dirt,
@@ -14147,6 +14202,11 @@
 "Vt" = (
 /turf/closed/indestructible/wood,
 /area/crew_quarters/theatre/zoo_chicken)
+"Vv" = (
+/obj/structure/mopbucket,
+/obj/item/mop,
+/turf/open/floor/material,
+/area/awaymission/cabin/snowforest/forest)
 "Vz" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 10
@@ -14164,6 +14224,10 @@
 /obj/item/emptysandbag,
 /obj/item/emptysandbag,
 /turf/open/floor/plating/asteroid,
+/area/awaymission/cabin/snowforest/forest)
+"VN" = (
+/obj/structure/janitorialcart,
+/turf/open/floor/material,
 /area/awaymission/cabin/snowforest/forest)
 "Wa" = (
 /obj/structure/railing/wooden{
@@ -14255,6 +14319,13 @@
 	},
 /turf/open/floor/engine,
 /area/crew_quarters/theatre/zoo_vat)
+"XS" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = 11
+	},
+/turf/open/floor/material,
+/area/awaymission/cabin/snowforest/forest)
 "Yl" = (
 /obj/structure/railing/wooden{
 	dir = 10
@@ -14262,7 +14333,9 @@
 /turf/open/floor/plating/sandy_dirt,
 /area/crew_quarters/theatre/zoo_stick)
 "Yq" = (
-/obj/structure/fluff/ferriswheel,
+/obj/structure/fluff/ferriswheel{
+	layer = 4
+	},
 /turf/open/floor/pod/light,
 /area/awaymission/cabin/snowforest/forest)
 "Ys" = (
@@ -14305,6 +14378,14 @@
 	},
 /turf/open/floor/oldshuttle,
 /area/crew_quarters/theatre/zoo_spess)
+"Zq" = (
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/glass/bucket{
+	pixel_y = 5
+	},
+/obj/item/toy/figure/janitor,
+/turf/open/floor/material,
+/area/awaymission/cabin/snowforest/forest)
 "Zt" = (
 /obj/structure/railing/wooden{
 	dir = 5
@@ -17352,7 +17433,7 @@ br
 br
 br
 br
-Rd
+br
 oX
 PI
 GU
@@ -18119,7 +18200,7 @@ Mr
 AG
 Yv
 oG
-Rd
+br
 br
 br
 br
@@ -18891,9 +18972,9 @@ an
 an
 br
 br
-br
+CK
 oK
-br
+Vz
 br
 br
 an
@@ -19148,9 +19229,9 @@ an
 an
 an
 br
-oK
+dF
 oQ
-oK
+ch
 br
 an
 an
@@ -19405,9 +19486,9 @@ an
 an
 br
 br
-br
-oK
-br
+Dr
+Du
+Ja
 br
 br
 an
@@ -20175,7 +20256,7 @@ Qq
 AI
 Mn
 ZD
-Rd
+br
 br
 br
 br
@@ -20950,7 +21031,7 @@ br
 br
 br
 br
-Rd
+br
 HV
 Wm
 FE
@@ -21718,9 +21799,9 @@ an
 an
 br
 br
-br
+CK
 oK
-br
+Vz
 br
 br
 an
@@ -21975,9 +22056,9 @@ an
 an
 an
 br
-oK
-oQ
-oK
+dF
+EH
+ch
 br
 an
 an
@@ -22232,9 +22313,9 @@ an
 an
 br
 br
-br
-oK
-br
+Dr
+Du
+Ja
 br
 br
 an
@@ -23006,7 +23087,7 @@ br
 br
 br
 br
-Rd
+br
 TM
 KA
 WX
@@ -23773,7 +23854,7 @@ Tj
 Tw
 Mm
 Mo
-Rd
+br
 br
 br
 br
@@ -24302,11 +24383,11 @@ an
 an
 an
 an
-an
-an
-an
-an
-an
+Jm
+Jm
+Jm
+Jm
+Jm
 an
 an
 bJ
@@ -24545,25 +24626,25 @@ an
 an
 br
 br
-br
+CK
 oK
+Vz
 br
 br
 br
+br
+br
 an
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
+br
+br
+br
+br
+br
+Oj
+UO
+UT
+Zq
+Jm
 an
 an
 bJ
@@ -24802,25 +24883,25 @@ an
 an
 an
 br
-oK
+dF
 oQ
-oK
+ch
 br
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+Rd
+UT
+UT
+GQ
+Jm
 an
 an
 bJ
@@ -25059,25 +25140,25 @@ an
 an
 br
 br
+Dr
+Du
+Ja
 br
-oK
 br
 br
 br
+br
+br
+br
+br
 an
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
+br
+br
+Jm
+VN
+XS
+Vv
+Jm
 an
 an
 bJ
@@ -25330,11 +25411,11 @@ an
 an
 an
 an
-an
-an
-an
-an
-an
+Jm
+Jm
+Jm
+Jm
+Jm
 an
 an
 bJ
@@ -25829,7 +25910,7 @@ UR
 YL
 ZL
 Iy
-Rd
+br
 br
 br
 br
@@ -26604,7 +26685,7 @@ br
 br
 br
 br
-Rd
+br
 Wa
 LM
 Gu
@@ -27372,9 +27453,9 @@ an
 an
 br
 br
-br
+CK
 oK
-br
+Vz
 br
 br
 an
@@ -27629,9 +27710,9 @@ an
 an
 an
 br
-oK
-oQ
-oK
+dF
+EH
+ch
 br
 an
 an
@@ -27886,9 +27967,9 @@ an
 an
 br
 br
-br
-oK
-br
+Dr
+Du
+Ja
 br
 br
 an
@@ -28660,7 +28741,7 @@ br
 br
 br
 br
-Rd
+br
 DM
 OP
 RN
@@ -29427,7 +29508,7 @@ nL
 WF
 DP
 Ve
-Rd
+br
 br
 br
 br
@@ -30199,9 +30280,9 @@ an
 an
 br
 br
-br
+CK
 oK
-br
+Vz
 br
 br
 an
@@ -30456,9 +30537,9 @@ an
 an
 an
 br
-oK
+dF
 oQ
-oK
+ch
 br
 an
 an
@@ -30713,9 +30794,9 @@ an
 an
 br
 br
-br
-oK
-br
+Dr
+Du
+Ja
 br
 br
 an
@@ -31483,7 +31564,7 @@ Xm
 IB
 LK
 Pj
-Dr
+Wt
 br
 br
 br
@@ -32258,7 +32339,7 @@ Wt
 br
 br
 br
-Rd
+br
 KH
 ZQ
 Ch

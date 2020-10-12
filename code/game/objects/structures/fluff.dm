@@ -300,6 +300,8 @@
 	anchored = TRUE
 	deconstructible = FALSE
 
+// ------------------- SIGNS
+
 /obj/structure/fluff/books_sign
 	name = "crude sign"
 	desc = "A crudely-made sign with the words 'books' written. What could it mean?"
