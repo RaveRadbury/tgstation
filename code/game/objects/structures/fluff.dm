@@ -601,3 +601,16 @@
 	density = FALSE
 	anchored = TRUE
 	deconstructible = FALSE
+
+/obj/structure/fluff/ferriswheel
+	name = "Ferris Wheel"
+	desc = "A magestic and boring way to view a fair. There's a small sign that says 'out of order.'"
+	icon = 'icons/misc/ferris1d.dmi'
+	icon_state = "ferris"
+	pixel_x = -64 //So the big ol' 160x160 sprite shows up right
+	max_integrity = 9999
+	layer = 2.54
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	density = FALSE
+	anchored = TRUE
+	deconstructible = FALSE
