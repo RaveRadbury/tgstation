@@ -16849,12 +16849,31 @@
 "PH" = (
 /turf/open/floor/plasteel/stairs,
 /area/space)
+"PX" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/turf/open/floor/plating/grass{
+	color = "#cccc00"
+	},
+/area/awaymission/cabin/snowforest/forest)
 "Qe" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
 /turf/open/floor/wood,
 /area/space)
+"Rg" = (
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/turf/open/floor/plating/grass{
+	color = "#cccc00"
+	},
+/area/awaymission/cabin/snowforest/forest)
 "Rl" = (
 /turf/open/floor/white{
 	color = "#008000";
@@ -16882,12 +16901,28 @@
 	name = "tent"
 	},
 /area/space)
+"RE" = (
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/turf/open/floor/plating/grass{
+	color = "#cccc00"
+	},
+/area/awaymission/cabin/snowforest/forest)
 "RP" = (
 /turf/open/floor/white{
 	color = "#800080";
 	name = "tent"
 	},
 /area/space)
+"RS" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/turf/open/floor/plating/grass{
+	color = "#cccc00"
+	},
+/area/awaymission/cabin/snowforest/forest)
 "Sr" = (
 /obj/structure/railing/wooden{
 	dir = 8
@@ -16932,6 +16967,12 @@
 	},
 /turf/open/transparent/openspace,
 /area/space)
+"Wi" = (
+/obj/structure/railing/corner,
+/turf/open/floor/plating/grass{
+	color = "#cccc00"
+	},
+/area/awaymission/cabin/snowforest/forest)
 "WB" = (
 /obj/structure/railing/wooden{
 	dir = 1
@@ -16974,6 +17015,18 @@
 	},
 /turf/open/floor/wood,
 /area/space)
+"YI" = (
+/obj/structure/railing{
+	dir = 10
+	},
+/obj/structure/railing{
+	dir = 4;
+	layer = 2.7
+	},
+/turf/open/floor/plating/grass{
+	color = "#cccc00"
+	},
+/area/awaymission/cabin/snowforest/forest)
 "YP" = (
 /turf/open/floor/white{
 	color = "#4169e1";
@@ -55630,13 +55683,13 @@ Ei
 an
 an
 an
-an
+Wi
 EU
 EU
 CJ
 CJ
 CJ
-an
+Rg
 an
 an
 AC
@@ -55886,7 +55939,7 @@ an
 Ch
 an
 BU
-an
+Wi
 EG
 br
 br
@@ -55894,7 +55947,7 @@ Fb
 br
 br
 DW
-an
+Rg
 an
 AC
 an
@@ -56142,7 +56195,7 @@ oy
 an
 Ei
 an
-an
+Wi
 EG
 br
 br
@@ -56405,7 +56458,7 @@ br
 EV
 an
 an
-an
+RS
 rf
 br
 DV
@@ -56666,7 +56719,7 @@ an
 BO
 br
 DW
-an
+Rg
 AC
 an
 an
@@ -57173,11 +57226,11 @@ an
 BO
 br
 DW
+Rg
 an
 an
 an
-an
-an
+RS
 rf
 br
 DV
@@ -57432,7 +57485,7 @@ br
 br
 DW
 CJ
-an
+Rg
 an
 BU
 BO
@@ -57684,14 +57737,14 @@ an
 an
 BU
 Ch
-an
+RS
 rf
 br
 br
 br
 DW
 CJ
-an
+Rg
 BO
 br
 DV
@@ -57942,7 +57995,7 @@ an
 an
 Ch
 an
-an
+RS
 qC
 rf
 br
@@ -60257,9 +60310,9 @@ Er
 Ez
 Cx
 AC
-CJ
+PX
 EZ
-qC
+YI
 br
 DV
 BO
@@ -60775,7 +60828,7 @@ qC
 qC
 Fc
 qC
-an
+RE
 BO
 br
 DV
@@ -61537,7 +61590,7 @@ BO
 br
 DW
 Ed
-an
+Rg
 Ch
 an
 an
@@ -62047,7 +62100,7 @@ an
 oy
 an
 oy
-an
+RS
 qC
 rf
 br
@@ -62306,7 +62359,7 @@ an
 an
 oy
 an
-an
+RS
 qC
 qC
 Ch
@@ -62320,7 +62373,7 @@ Fd
 qC
 Fd
 Fd
-an
+RE
 AC
 an
 an
