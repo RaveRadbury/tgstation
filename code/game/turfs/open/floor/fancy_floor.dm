@@ -144,17 +144,6 @@
 	clawfootstep = FOOTSTEP_SAND
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 
-/turf/open/floor/grass/snow/fall
-	name = "grass"
-	desc = "A patch of grass."
-	icon = 'icons/misc/back_to_the_lab_again.dmi'
-	icon_state = "grass_autumn"
-	base_icon_state = "grass_autumn"
-	slowdown = 0
-	smoothing_groups = null
-	canSmoothWith = null
-	layer = HIGH_TURF_LAYER
-
 /turf/open/floor/grass/snow/spawniconchange()
 	return
 
