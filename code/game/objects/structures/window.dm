@@ -256,20 +256,14 @@
 		return
 	if(!disassembled)
 		playsound(src, breaksound, 70, TRUE)
-		if(!(flags_1 & NODECONSTRUCT_1))
-			for(var/obj/item/shard/debris in spawnDebris(drop_location()))
-				transfer_fingerprints_to(debris) // transfer fingerprints to shards only
 	qdel(src)
 	update_nearby_icons()
 
 /obj/structure/window/proc/spawnDebris(location)
 	. = list()
-	. += new /obj/item/shard(location)
 	. += new /obj/effect/decal/cleanable/glass(location)
 	if (reinf)
 		. += new /obj/item/stack/rods(location, (fulltile ? 2 : 1))
-	if (fulltile)
-		. += new /obj/item/shard(location)
 
 /obj/structure/window/proc/can_be_rotated(mob/user,rotation_type)
 	if(anchored)
@@ -480,12 +474,9 @@
 
 /obj/structure/window/plasma/spawnDebris(location)
 	. = list()
-	. += new /obj/item/shard/plasma(location)
 	. += new /obj/effect/decal/cleanable/glass/plasma(location)
 	if (reinf)
 		. += new /obj/item/stack/rods(location, (fulltile ? 2 : 1))
-	if (fulltile)
-		. += new /obj/item/shard/plasma(location)
 
 /obj/structure/window/plasma/spawner/east
 	dir = EAST
