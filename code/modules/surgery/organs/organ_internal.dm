@@ -32,6 +32,8 @@
 	///The size of the reagent container
 	var/reagent_vol = 10
 
+	var/failure_time = 0
+
 /obj/item/organ/Initialize()
 	. = ..()
 	if(organ_flags & ORGAN_EDIBLE)
@@ -40,7 +42,13 @@
 			foodtypes = RAW | MEAT | GROSS,\
 			volume = reagent_vol,\
 			after_eat = CALLBACK(src, .proc/OnEatFrom))
-
+/*
+ * Insert the organ into the select mob.
+ *
+ * M - the mob who will get our organ
+ * special - "quick swapping" an organ out - when TRUE, the mob will be unaffected by not having that organ for the moment
+ * drop_if_replaced - if there's an organ in the slot already, whether we drop it afterwards
+ */
 /obj/item/organ/proc/Insert(mob/living/carbon/M, special = FALSE, drop_if_replaced = TRUE)
 	if(!iscarbon(M) || owner == M)
 		return
@@ -59,13 +67,22 @@
 	M.internal_organs |= src
 	M.internal_organs_slot[slot] = src
 	moveToNullspace()
+	RegisterSignal(owner, COMSIG_PARENT_EXAMINE, .proc/on_owner_examine)
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.Grant(M)
 	STOP_PROCESSING(SSobj, src)
 
-//Special is for instant replacement like autosurgeons
+/*
+ * Remove the organ from the select mob.
+ *
+ * M - the mob who owns our organ, that we're removing the organ from.
+ * special - "quick swapping" an organ out - when TRUE, the mob will be unaffected by not having that organ for the moment
+ */
 /obj/item/organ/proc/Remove(mob/living/carbon/M, special = FALSE)
+
+	UnregisterSignal(owner, COMSIG_PARENT_EXAMINE)
+
 	owner = null
 	if(M)
 		M.internal_organs -= src
@@ -82,28 +99,36 @@
 	START_PROCESSING(SSobj, src)
 
 
+/obj/item/organ/proc/on_owner_examine(datum/source, mob/user, list/examine_list)
+	return
+
 /obj/item/organ/proc/on_find(mob/living/finder)
 	return
 
-/obj/item/organ/process(delta_time)
-	on_death(delta_time) //Kinda hate doing it like this, but I really don't want to call process directly.
+/obj/item/organ/process(delta_time, times_fired)
+	on_death(delta_time, times_fired) //Kinda hate doing it like this, but I really don't want to call process directly.
 
-/obj/item/organ/proc/on_death(delta_time = 2) //runs decay when outside of a person
+/obj/item/organ/proc/on_death(delta_time, times_fired) //runs decay when outside of a person
 	if(organ_flags & (ORGAN_SYNTHETIC | ORGAN_FROZEN))
 		return
-	applyOrganDamage(maxHealth * decay_factor * 0.5 * delta_time)
+	applyOrganDamage(decay_factor * maxHealth * delta_time)
 
-/obj/item/organ/proc/on_life() //repair organ damage if the organ is not failing
+/obj/item/organ/proc/on_life(delta_time, times_fired) //repair organ damage if the organ is not failing
 	if(organ_flags & ORGAN_FAILING)
+		handle_failing_organs(delta_time)
 		return
+
+	if(failure_time > 0)
+		failure_time--
+
 	if(organ_flags & ORGAN_SYNTHETIC_EMP) //Synthetic organ has been emped, is now failing.
-		applyOrganDamage(maxHealth * decay_factor)
+		applyOrganDamage(decay_factor * maxHealth * delta_time)
 		return
 	///Damage decrements by a percent of its maxhealth
-	var/healing_amount = -(maxHealth * healing_factor)
+	var/healing_amount = healing_factor
 	///Damage decrements again by a percent of its maxhealth, up to a total of 4 extra times depending on the owner's health
-	healing_amount -= owner.satiety > 0 ? 4 * healing_factor * owner.satiety / MAX_SATIETY : 0
-	applyOrganDamage(healing_amount, damage) // pass curent damage incase we are over cap
+	healing_amount += (owner.satiety > 0) ? (4 * healing_factor * owner.satiety / MAX_SATIETY) : 0
+	applyOrganDamage(-healing_amount * maxHealth * delta_time, damage) // pass curent damage incase we are over cap
 
 /obj/item/organ/examine(mob/user)
 	. = ..()
@@ -224,6 +249,22 @@
 			ears.Insert(src)
 		ears.setOrganDamage(0)
 
+///Organs don't die instantly, and neither should you when you get fucked up
+/obj/item/organ/proc/handle_failing_organs(delta_time)
+	if(owner.stat == DEAD)
+		return
+
+	failure_time += delta_time
+	organ_failure(delta_time)
+
+/** organ_failure
+ * generic proc for handling dying organs
+ *
+ * Arguments:
+ * delta_time - seconds since last tick
+ */
+/obj/item/organ/proc/organ_failure(delta_time)
+	return
 
 /** get_availability
  * returns whether the species should innately have this organ.

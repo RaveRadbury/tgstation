@@ -60,6 +60,7 @@
 	maxbodytemp = 1500
 	faction = list("carp")
 	pressure_resistance = 200
+	is_flying_animal = TRUE
 	/// Current time since the the last rift was activated.  If set to -1, does not increment.
 	var/riftTimer = 0
 	/// Maximum amount of time which can pass without a rift before Space Dragon despawns.
@@ -86,6 +87,7 @@
 /mob/living/simple_animal/hostile/space_dragon/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_SPACEWALK, INNATE_TRAIT)
+	ADD_TRAIT(src, TRAIT_NO_FLOATING_ANIM, INNATE_TRAIT)
 	gust = new
 	gust.Grant(src)
 	rift = new
@@ -98,9 +100,9 @@
 		color_selection()
 
 
-/mob/living/simple_animal/hostile/space_dragon/Life(mapload)
+/mob/living/simple_animal/hostile/space_dragon/Life(delta_time = SSMOBS_DT, times_fired)
 	. = ..()
-	tiredness = max(tiredness - 1, 0)
+	tiredness = max(tiredness - (0.5 * delta_time), 0)
 	for(var/mob/living/consumed_mob in src)
 		if(consumed_mob.stat == DEAD)
 			continue
