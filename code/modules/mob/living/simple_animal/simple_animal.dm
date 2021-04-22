@@ -88,7 +88,10 @@
 	var/attack_verb_continuous = "attacks"
 	///Attacking verb in present simple tense.
 	var/attack_verb_simple = "attack"
-	var/attack_sound = null
+	/// Sound played when the critter attacks.
+	var/attack_sound
+	/// Override for the visual attack effect shown on 'do_attack_animation()'.
+	var/attack_vis_effect
 	///Attacking, but without damage, verb in present continuous tense.
 	var/friendly_verb_continuous = "nuzzles"
 	///Attacking, but without damage, verb in present simple tense.
@@ -186,6 +189,7 @@
 	if(dextrous)
 		AddComponent(/datum/component/personal_crafting)
 		ADD_TRAIT(src, TRAIT_ADVANCEDTOOLUSER, ROUNDSTART_TRAIT)
+		ADD_TRAIT(src, TRAIT_CAN_STRIP, ROUNDSTART_TRAIT)
 	if(is_flying_animal)
 		ADD_TRAIT(src, TRAIT_MOVE_FLYING, ROUNDSTART_TRAIT)
 
@@ -274,11 +278,6 @@
 		else
 			set_stat(CONSCIOUS)
 	med_hud_set_status()
-
-/mob/living/simple_animal/handle_status_effects(delta_time, times_fired)
-	..()
-	if(stuttering)
-		stuttering = 0
 
 /**
  * Updates the simple mob's stamina loss.
@@ -677,7 +676,6 @@
 	if(client && hud_used && hud_used.hud_version != HUD_STYLE_NOHUD)
 		for(var/obj/item/I in held_items)
 			var/index = get_held_index_of_item(I)
-			I.layer = ABOVE_HUD_LAYER
 			I.plane = ABOVE_HUD_PLANE
 			I.screen_loc = ui_hand_position(index)
 			client.screen |= I

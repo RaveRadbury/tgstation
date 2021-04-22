@@ -93,6 +93,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	nutriment_factor = 1 * REAGENTS_METABOLISM
 	boozepwr = 25
 	taste_description = "piss water"
+	glass_icon_state = "beerglass"
 	glass_name = "glass of beer"
 	glass_desc = "A freezing pint of beer."
 	ph = 4
@@ -335,6 +336,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_desc = "A crystal clear glass of Griffeater gin."
 	ph = 6.9
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	glass_price = DRINK_PRICE_STOCK
 
 /datum/reagent/consumable/ethanol/rum
 	name = "Rum"
@@ -387,6 +389,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	shot_glass_icon_state = "shotglassred"
 	ph = 3.45
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	glass_price = DRINK_PRICE_STOCK
 
 /datum/reagent/consumable/ethanol/wine/on_merge(data)
 	. = ..()
@@ -410,6 +413,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	taste_description = "scaley sweetness"
 	ph = 3
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	glass_price = DRINK_PRICE_STOCK
 
 /datum/reagent/consumable/ethanol/grappa
 	name = "Grappa"
@@ -422,6 +426,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_desc = "A fine drink originally made to prevent waste by using the leftovers from winemaking."
 	ph = 3.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	glass_price = DRINK_PRICE_STOCK
 
 /datum/reagent/consumable/ethanol/amaretto
 	name = "Amaretto"
@@ -434,6 +439,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_desc = "A sweet and syrupy looking drink."
 	shot_glass_icon_state = "shotglassgold"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	glass_price = DRINK_PRICE_STOCK
 
 /datum/reagent/consumable/ethanol/cognac
 	name = "Cognac"
@@ -447,6 +453,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	shot_glass_icon_state = "shotglassbrown"
 	ph = 3.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	glass_price = DRINK_PRICE_STOCK
 
 /datum/reagent/consumable/ethanol/absinthe
 	name = "Absinthe"
@@ -509,21 +516,8 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	shot_glass_icon_state = "shotglassgold"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
-	/// Ratio of gold that the goldschlager recipe contains
-	var/static/gold_ratio
-
 	// This drink is really popular with a certain demographic.
 	var/teenage_girl_quality = DRINK_VERYGOOD
-
-/datum/reagent/consumable/ethanol/goldschlager/New()
-	. = ..()
-	if(!gold_ratio)
-		// Calculate the amount of gold that goldschlager is made from
-		var/datum/chemical_reaction/drink/goldschlager/goldschlager_reaction = new
-		var/vodka_amount = goldschlager_reaction.required_reagents[/datum/reagent/consumable/ethanol/vodka]
-		var/gold_amount = goldschlager_reaction.required_reagents[/datum/reagent/gold]
-		gold_ratio = gold_amount / (gold_amount + vodka_amount)
-		qdel(goldschlager_reaction)
 
 /datum/reagent/consumable/ethanol/goldschlager/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume)
 	// Reset quality each time, since the bottle can be shared
@@ -541,7 +535,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	if(!(methods & INGEST))
 		return ..()
 
-	var/convert_amount = trans_volume * gold_ratio
+	var/convert_amount = trans_volume * min(GOLDSCHLAGER_GOLD_RATIO, 1)
 	A.reagents.remove_reagent(/datum/reagent/consumable/ethanol/goldschlager, convert_amount)
 	A.reagents.add_reagent(/datum/reagent/gold, convert_amount)
 	return ..()
@@ -573,6 +567,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_desc = "A mild but still great cocktail. Drink up, like a true Englishman."
 	ph = 3
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	glass_price = DRINK_PRICE_EASY
 
 /datum/reagent/consumable/ethanol/rum_coke
 	name = "Rum and Coke"
@@ -632,6 +627,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_name = "Classic Martini"
 	glass_desc = "Damn, the bartender even stirred it, not shook it."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	glass_price = DRINK_PRICE_EASY
 
 /datum/reagent/consumable/ethanol/vodkamartini
 	name = "Vodka Martini"
@@ -961,7 +957,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 /datum/reagent/consumable/ethanol/manhattan_proj
 	name = "Manhattan Project"
 	description = "A scientist's drink of choice, for pondering ways to blow up the station."
-	color = "##ff3300" // rgb: 255,51,0
+	color = COLOR_MOSTLY_PURE_RED
 	boozepwr = 45
 	quality = DRINK_VERYGOOD
 	taste_description = "death, the destroyer of worlds"
@@ -1214,6 +1210,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_name = "Allies cocktail"
 	glass_desc = "A drink made from your allies."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	glass_price = DRINK_PRICE_EASY
 
 /datum/reagent/consumable/ethanol/acid_spit
 	name = "Acid Spit"
@@ -1400,6 +1397,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_desc = "Tastes like autumn... no wait, fall!"
 	shot_glass_icon_state = "shotglassbrown"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	glass_price = DRINK_PRICE_STOCK
 
 
 /datum/reagent/consumable/ethanol/fetching_fizz //A reference to one of my favorite games of all time. Pulls nearby ores to the imbiber!
@@ -1703,7 +1701,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	var/obj/item/organ/liver/liver = M.getorganslot(ORGAN_SLOT_LIVER)
 	if(liver && HAS_TRAIT(liver, TRAIT_LAW_ENFORCEMENT_METABOLISM))
 		M.heal_bodypart_damage(1 * REM * delta_time, 1 * REM * delta_time)
-		M.adjustBruteLoss(-2 * REM * delta_time, 0)
 		. = TRUE
 	return ..()
 
@@ -1724,10 +1721,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	var/obj/item/organ/liver/liver = M.getorganslot(ORGAN_SLOT_LIVER)
 	if(liver && HAS_TRAIT(liver, TRAIT_LAW_ENFORCEMENT_METABOLISM))
 		M.heal_bodypart_damage(2 * REM * delta_time, 2 * REM *  delta_time, 2 * REM * delta_time)
-		M.adjustBruteLoss(-5 * REM * delta_time, 0)
-		M.adjustOxyLoss(-5 * REM * delta_time, 0)
-		M.adjustFireLoss(-5 * REM * delta_time, 0)
-		M.adjustToxLoss(-5 * REM * delta_time, 0)
 		. = TRUE
 	return ..()
 
