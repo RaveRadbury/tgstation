@@ -271,7 +271,7 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 	return (BRUTELOSS)
 
 
-/obj/item/shard/Initialize(mapload)
+/obj/item/shard/Initialize()
 	. = ..()
 	AddElement(/datum/element/caltrop, min_damage = force)
 	AddComponent(/datum/component/butchering, 150, 65)
@@ -292,10 +292,10 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 	var/turf/T = get_turf(src)
 	if(T && is_station_level(T.z))
 		SSblackbox.record_feedback("tally", "station_mess_created", 1, name)
-	if(!(istype(get_area(src), /area/tdome/arena)) && !mapload)
-		visible_message("<span class='warning'>...Just kidding. [src] explodes, causing a miniature black hole.</span>")
-		message_admins("A glass shard was created out of the arena at [ADMIN_VERBOSEJMP(src.loc)].")
-		qdel(src)
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered,
+	)
+	AddElement(/datum/element/connect_loc, src, loc_connections)
 
 /obj/item/shard/Destroy()
 	. = ..()
@@ -351,12 +351,12 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 		qdel(src)
 	return TRUE
 
-/obj/item/shard/Crossed(atom/movable/AM)
+/obj/item/shard/proc/on_entered(datum/source, atom/movable/AM)
+	SIGNAL_HANDLER
 	if(isliving(AM))
 		var/mob/living/L = AM
 		if(!(L.movement_type & (FLYING|FLOATING)) || L.buckled)
 			playsound(src, 'sound/effects/glass_step.ogg', HAS_TRAIT(L, TRAIT_LIGHT_STEP) ? 30 : 50, TRUE)
-	return ..()
 
 /obj/item/shard/plasma
 	name = "purple shard"
